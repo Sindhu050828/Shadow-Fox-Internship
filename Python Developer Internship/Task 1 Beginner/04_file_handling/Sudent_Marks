@@ -1,0 +1,37 @@
+import csv
+students = []
+# 1. Open student_marks.csv in read mode
+with open("04_file_handling/student_marks.csv", "r") as file:
+    reader = csv.DictReader(file)
+    # 2. Create dictionaries from the CSV data
+    for row in reader:
+        math = int(row["Math"])
+        science = int(row["Science"])
+        english = int(row["English"])
+        # 3. Calculate total marks
+        total_marks = math + science + english
+        # 4. Calculate average marks
+        average = total_marks / 3
+        # Add new fields to dictionary
+        row["total_marks"] = total_marks
+        row["Average"] = average
+        students.append(row)
+# Display student information
+for student in students:
+    print(student)
+# 5 & 6. Create a new CSV file with total marks and average
+with open("student_marks_updated.csv", "w", newline="") as new_file:
+    fieldnames = [
+        "Name",
+        "Math",
+        "Science",
+        "English",
+        "total_marks",
+        "Average"
+    ]
+    writer = csv.DictWriter(new_file, fieldnames=fieldnames)
+    # Write column headings
+    writer.writeheader()
+    # Write student data
+    writer.writerows(students)
+print("\nNew CSV file created successfully!")

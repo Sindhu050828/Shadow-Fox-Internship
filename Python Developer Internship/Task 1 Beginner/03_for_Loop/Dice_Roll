@@ -1,0 +1,26 @@
+import random
+# Number of times to roll the die
+rolls = 20
+count_6 = 0
+count_1 = 0
+two_6s = 0
+previous_roll = 0
+# Roll the die 20 times
+for i in range(rolls):
+    current_roll = random.randint(1, 6)
+    print("Roll", i + 1, ":", current_roll)
+    # Count number of 6s
+    if current_roll == 6:
+        count_6 += 1
+    # Count number of 1s
+    if current_roll == 1:
+        count_1 += 1
+    # Count two consecutive 6s
+    if previous_roll == 6 and current_roll == 6:
+        two_6s += 1
+    previous_roll = current_roll
+# Print statistics
+print("\nStatistics:")
+print("Number of times rolled a 6:", count_6)
+print("Number of times rolled a 1:", count_1)
+print("Number of times rolled two 6s in a row:", two_6s)

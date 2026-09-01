@@ -1,0 +1,23 @@
+# Jumping Jacks Workout Program
+completed = 0
+total = 100
+while completed < total:
+    # Perform 10 jumping jacks
+    completed += 10
+    remaining = total - completed
+    print("\nYou completed", completed, "jumping jacks.")
+    # Check if all jumping jacks are completed
+    if completed == total:
+        print("Congratulations! You completed the workout.")
+        break
+    # Ask if the user is tired
+    tired = input("Are you tired? (yes/y or no/n): ").lower()
+    if tired == "yes" or tired == "y":
+        skip = input("Do you want to skip the remaining sets? (yes/y or no/n): ").lower()
+        if skip == "yes" or skip == "y":
+            print("You completed a total of", completed, "jumping jacks.")
+            break
+        else:
+            print(remaining, "jumping jacks are remaining.")
+    elif tired == "no" or tired == "n":
+        print(remaining, "jumping jacks are remaining.")
